@@ -109,8 +109,8 @@ class Vote(db.Model):
     __tablename__ = 'vote'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
-    # 定义和Iterms表的一对多关系
-    iterm = db.relationship('Iterms', backref='votes', lazy='dynamic')
+    # 定义和Iterm表的一对多关系
+    iterm = db.relationship('Iterm', backref='votes', lazy='dynamic')
     # 投票对应的选项数
     count = db.Column(db.Integer)
 
@@ -119,6 +119,7 @@ class Vote(db.Model):
                 'id': self.id,
                 'name': self.name,
                 'count': self.count
+        }
 
     @staticmethod
     def from_json(json_vote):
@@ -135,7 +136,7 @@ class Vote(db.Model):
 class Iterm(db.Model):
     __tablename__ = 'iterm'
     id = db.Column(db.Integer, primary_key=True)
-    vote_id = db.Column(db.Integer, db.ForeignKey('votes.id'))
+    vote_id = db.Column(db.Integer, db.ForeignKey('vote.id'))
     count = db.Column(db.Integer)
     selected = db.Column(db.Integer, default=0) # 选项被选择的数目
 
@@ -143,7 +144,7 @@ class Iterm(db.Model):
         json_iterm = {
             'id': self.id,
             'vote_id': self.vote_id,
-            'selected' = self.selected
+            'selected': self.selected
         }
         return json_iterm
 
