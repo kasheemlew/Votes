@@ -136,13 +136,15 @@ class Vote(db.Model):
 class Item(db.Model):
     __tablename__ = 'item'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
     vote_id = db.Column(db.Integer, db.ForeignKey('vote.id'))
     count = db.Column(db.Integer)
     selected = db.Column(db.Integer, default=0) # 选项被选择的数目
 
     def to_json(self):
         json_item = {
-            'id': self.id,
+            'id':self.id,
+            'name': self.name,
             'vote_id': self.vote_id,
             'selected': self.selected
         }
@@ -154,5 +156,7 @@ class Item(db.Model):
             vote_id = json_item.get('vote_id'),
             selected = 0
         )
+        return item
+
     def __repr__(self):
         return "<Item %r>" % self.id
