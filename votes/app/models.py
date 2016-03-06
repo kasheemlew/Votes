@@ -11,7 +11,6 @@ from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
 from wtforms.validators import Email
-from app.exceptions import ValidationError
 
 # permissions
 class Permission:
@@ -100,41 +99,10 @@ class User(db.Model, UserMixin):
 
 class AnonymousUser(AnonymousUserMixin):
     """ anonymous user """
-    def vote(self, user):
-        f = Vote(voted=user)
-        db.session.add(f)
-
-    def can(self, permissions):
-        return True
-
     def is_admin(self):
         return False
 
 login_manager.anonymous_user = AnonymousUser
 
 # you can writing your models here:
-class Iterm(db.Model):
-    __tablename__ = 'iterms'
-    id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.Text)
-    body_html = db.Column(db.Text)
 
-    def to_json(self):
-        json_iterm = {
-            'url': url_for('api.get_post', id=self.id, _external=True),
-            'body': self.body,
-            'body_html': self.body_html
-        }
-        return josn_iterm
-
-    @staticmethod
-    def from_json(json_iterm):
-        body = json_post.get('body')
-        if body is None or body == '':
-            raise ValidationError('iterm does not have a body')
-        return Iterm(body=body)
-
-class Vote(db.Model):
-    __tablename__ = 'votes'
-    voted_id = db.Column(db.Integer, db.ForeignKey('iterms.id'),
-                         primary_key=True)
