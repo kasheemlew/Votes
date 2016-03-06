@@ -13,7 +13,9 @@ def add_one(id):
     item.selected += 1
     db.session.add(item)
     db.session.commit()
-    return jsonify(user.to_json()), 201
+    return jsonify({
+        'now': item.selected
+    }), 201
 
 
 @api.route('/votes/')
@@ -34,11 +36,9 @@ def new_vote():
     vote = Vote.from_json(request.json)
     db.session.add(vote)
     db.session.commit()
-    return json.dumps(
-        [vote.to_json()],
-        indent = 1
-    ), 201
-
+    return jsonify({
+        'created': vote.id
+    })
 
 @api.route('/votes/<int:id>', methods=['GET', 'DELETE'])
 @auth.login_required
@@ -47,5 +47,5 @@ def delete_vote(id):
     db.session.delete(vote)
     db.session.commit()
     return jsonify({
-        'delete': id
+        'deleted': vote.id
         }), 200
