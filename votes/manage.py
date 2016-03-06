@@ -37,7 +37,7 @@ import os
 from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
 from app import db, app
-from app.models import User, Role
+from app.models import User, Role, Item, Vote
 
 # 编码设置
 reload(sys)
@@ -54,7 +54,9 @@ def make_shell_context():
         app = app,
         db = db,
         User = User,
-        Role = Role
+        Role = Role,
+        Vote = Vote,
+        Item = Item
     )
 
 

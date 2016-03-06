@@ -109,8 +109,8 @@ class Vote(db.Model):
     __tablename__ = 'vote'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
-    # 定义和Iterm表的一对多关系
-    iterm = db.relationship('Iterm', backref='votes', lazy='dynamic')
+    # 定义和Item表的一对多关系
+    item = db.relationship('Item', backref='votes', lazy='dynamic')
     # 投票对应的选项数
     count = db.Column(db.Integer)
 
@@ -133,26 +133,26 @@ class Vote(db.Model):
         return "<Table %r>" % self.name
 
 
-class Iterm(db.Model):
-    __tablename__ = 'iterm'
+class Item(db.Model):
+    __tablename__ = 'item'
     id = db.Column(db.Integer, primary_key=True)
     vote_id = db.Column(db.Integer, db.ForeignKey('vote.id'))
     count = db.Column(db.Integer)
     selected = db.Column(db.Integer, default=0) # 选项被选择的数目
 
     def to_json(self):
-        json_iterm = {
+        json_item = {
             'id': self.id,
             'vote_id': self.vote_id,
             'selected': self.selected
         }
-        return json_iterm
+        return json_item
 
     @staticmethod
-    def from_json(json_iterm):
-        iterm = Iter(
-            vote_id = json_iterm.get('vote_id'),
+    def from_json(json_item):
+        item = Item(
+            vote_id = json_item.get('vote_id'),
             selected = 0
         )
     def __repr__(self):
-        return "<Iterm %r>" % self.id
+        return "<Item %r>" % self.id
