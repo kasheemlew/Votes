@@ -41,14 +41,14 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'User': (Permission.COMMENT, True),
+            'User': (Permission.COMMENT, False),
             'Moderator': (Permission.COMMENT |
                           Permission.MODERATE_COMMENTS, False),
             'Administrator': (
                 Permission.COMMENT |
                 Permission.MODERATE_COMMENTS |
                 Permission.ADMINISTER,
-                False
+                True
             )
         }
         for r in roles:
@@ -104,5 +104,54 @@ class AnonymousUser(AnonymousUserMixin):
 
 login_manager.anonymous_user = AnonymousUser
 
-# you can writing your models here:
 
+class Vote(db.Model):
+    __tablename__ = 'vote'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    # 定义和Iterms表的一对多关系
+    iterm = db.relationship('Iterms', backref='votes', lazy='dynamic')
+    # 投票对应的选项数
+    count = db.Column(db.Integer)
+
+    def to_json(self):
+        json_vote = {
+                'id': self.id,
+                'name': self.name,
+                'count': self.count
+
+    @staticmethod
+    def from_json(json_vote):
+        vote = Vote(
+            name = json_vote.get('name'),
+            count = json_vote.get('count')
+        )
+        return vote
+
+    def __repr__(self):
+        return "<Table %r>" % self.name
+
+
+class Iterm(db.Model):
+    __tablename__ = 'iterm'
+    id = db.Column(db.Integer, primary_key=True)
+    vote_id = db.Column(db.Integer, db.ForeignKey('votes.id'))
+    count = db.Column(db.Integer)
+    selected = db.Column(db.Integer, default=0) # 选项被选择的数目
+
+    def to_json(self):
+        json_iterm = {
+            'id': self.id,
+            'vote_id': self.vote_id,
+            'selected' = self.selected
+        }
+        return json_iterm
+
+    @staticmethod
+    def from_json(json_iterm):
+        iterm = Iter(
+            vote_id = json_iterm.get('vote_id'),
+            selected = 0
+        )
+    def __repr__(self):
+        return "<Iterm %r>" % self.id
