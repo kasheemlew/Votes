@@ -1,0 +1,9 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Vote{% endblock %}
+
+{% block page_content %}
+<div>
+    {{ wtf.quickform(form) }}
+</div>
+{% endblock %}
