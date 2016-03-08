@@ -1,0 +1,12 @@
+<!DOCTYPE>
+<html>
+<body>
+<h1>{{ vote.name }}</h1>
+{% for item in vote.item %}
+<h3>{{ item.name }}</h3>
+<h3> count {{ item.count }}</h3>
+<hr>
+{% endfor %}
+</body>
+</html>
+

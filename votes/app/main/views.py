@@ -1,8 +1,9 @@
 # coding: utf-8
 from . import main
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for, session
 from . import main
 from app import db
+from app.models import Vote, Item, User
 import json
 
 
@@ -14,9 +15,24 @@ def test():
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    votes = Vote.query.all()
+    return render_template('index.html', votes=votes)
 
 
-@main.route('/vote1/', methods=['GET', 'POST'])
-def vote1():
-    return render_template('vote1.html')
+@main.route('/vote/<int:id>/', methods=['GET', 'POST'])
+def vote(id):
+    vote = Vote.query.get_or_404(id)
+    if request.method == 'POST':
+        iid = request.form.get('item')
+        item = Item.query.get_or_404(iid)
+        item.count += 1
+        db.session.add(item)
+        db.session.commit()
+        return redirect(url_for('main.result', id=vote.id))
+    return render_template('vote1.html', vote=vote)
+
+
+@main.route('/result/<int:id>/')
+def result(id):
+     vote = Vote.query.get_or_404(id)
+     return render_template('result.html', vote=vote)

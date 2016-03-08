@@ -1,13 +1,10 @@
-{% import "bootstrap/wtf.html" as wtf %}
-
-<div>
-    <p><a href="{{ url_for('auth.login') }}">Admin Login</a></p>
-</div>
-
-<h3>{{ form.vote1.label }}</h3>
-<p>{{ wtf.form_field(form.vote1) }}</p>
-
-<h3>{{ form.vote2.label }}</h3>
-<p>{{ wtf.form_field(form.vote2) }}</p>
-
-{{ form.submit }}
+<!DOCTYPE>
+<html>
+<body>
+<h1>VOTES</h1>
+{% for vote in votes %}
+<a href={{ url_for('main.vote', id=vote.id ) }}> {{ vote.name }} </a>
+{% if vote.is_on %}<h3>is on</h3>{% else %}<h3>closed</h3>{% endif %}
+{% endfor %}
+</body>
+</html>

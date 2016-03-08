@@ -112,7 +112,7 @@ class Vote(db.Model):
     # 定义和Item表的一对多关系
     item = db.relationship('Item', backref='votes', lazy='dynamic')
     # 投票对应的选项数
-    count = db.Column(db.Integer)
+    is_on = db.Column(db.Boolean)
 
     def to_json(self):
         json_vote = {
@@ -138,15 +138,13 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     vote_id = db.Column(db.Integer, db.ForeignKey('vote.id'))
-    count = db.Column(db.Integer)
-    selected = db.Column(db.Integer, default=0) # 选项被选择的数目
+    count = db.Column(db.Integer, default=0)
 
     def to_json(self):
         json_item = {
             'id':self.id,
             'name': self.name,
             'vote_id': self.vote_id,
-            'selected': self.selected
         }
         return json_item
 

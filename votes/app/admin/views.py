@@ -36,6 +36,7 @@ admin = Admin(
 
 
 # sql models management
-from app.models import User
+from app.models import User, Vote, Item
 admin.add_view(ModelView(User, db.session))
-
+admin.add_view(ModelView(Item, db.session))
+admin.add_view(ModelView(Vote, db.session))
