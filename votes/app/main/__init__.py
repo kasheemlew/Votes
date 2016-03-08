@@ -9,4 +9,4 @@ main = Blueprint(
     static_folder = 'static'
 )
 
-from . import views, forms
+from . import views
