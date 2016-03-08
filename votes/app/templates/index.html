@@ -1,0 +1,13 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+<div>
+    <p><a href="{{ url_for('auth.login') }}">Admin Login</a></p>
+</div>
+
+<h3>{{ form.vote1.label }}</h3>
+<p>{{ wtf.form_field(form.vote1) }}</p>
+
+<h3>{{ form.vote2.label }}</h3>
+<p>{{ wtf.form_field(form.vote2) }}</p>
+
+{{ form.submit }}

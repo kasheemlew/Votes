@@ -5,5 +5,5 @@ from wtforms import RadioField, SubmitField
 
 
 class VoteForm(Form):
-    vote = RadioField('Choice 1:', choices=[('a','Option A'), ('B', 'Option B')])
+    vote = RadioField('Vote 1:', choices=[('A','Option 1'), ('B', 'Option 2')])
     submit = SubmitField('Submit')

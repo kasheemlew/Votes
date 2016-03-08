@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from flask import Flask
+from flask.ext.bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from config import config
@@ -21,6 +22,7 @@ config[config_name].init_app(app)
 
 
 db = SQLAlchemy(app)
+bootstrap = Bootstrap(app)
 login_manager = LoginManager(app)
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
