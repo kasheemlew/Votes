@@ -43,6 +43,3 @@ app.register_blueprint(main, url_prefix='/main')
 
 from auth import auth
 app.register_blueprint(auth, url_prefix="/auth")
-
-from api_1_0 import api
-app.register_blueprint(api, url_prefix="/api")

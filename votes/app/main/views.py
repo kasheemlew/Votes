@@ -23,11 +23,11 @@ def index():
 def vote(id):
     vote = Vote.query.get_or_404(id)
     if request.method == 'POST':
-        iid = request.form.get('item')
-        item = Item.query.get_or_404(iid)
-        item.count += 1
-        db.session.add(item)
-        db.session.commit()
+	for iid in request.form.values():
+            item = Item.query.get_or_404(iid)
+            item.count += 1
+            db.session.add(item)
+            db.session.commit()
         return redirect(url_for('main.result', id=vote.id))
     return render_template('vote1.html', vote=vote)
 

@@ -1,17 +1,11 @@
 <!DOCTYPE>
 <html>
 <body>
-
-
 <form method='post'>
 {% for item in vote.item %}
-    <input type="checkbox" name='item' value={{ vote.id }}>{{ item.name }}<br>
+    <input type="checkbox" name={{ item.id }} value={{ item.id }}>{{ item.name }}<br>
 {% endfor %}
     <input type="submit" value="Submit">
 </form>
-
-    <p>{{ data }}</p>
-
-
 </body>
 </html>
