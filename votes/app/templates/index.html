@@ -4,7 +4,8 @@
 <h1>VOTES</h1>
 {% for vote in votes %}
 <a href={{ url_for('main.vote', id=vote.id ) }}> {{ vote.name }} </a>
-{% if vote.is_on %}<h3>is on</h3>{% else %}<h3>closed</h3>{% endif %}
+{% if vote.is_on %}<p>the vote is on</p>{% else %}<p>the votes has been closed</p>{% endif %}
+<hr>
 {% endfor %}
 </body>
 </html>
