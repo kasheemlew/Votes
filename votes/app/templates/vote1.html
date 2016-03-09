@@ -1,11 +1,43 @@
 <!DOCTYPE>
 <html>
-<body>
-<form method='post'>
-{% for item in vote.item %}
-    <input type="checkbox" name={{ item.id }} value={{ item.id }}>{{ item.name }}<br>
-{% endfor %}
-    <input type="submit" value="Submit">
-</form>
-</body>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
+</head>
+  <body>
+    <img class="fs_fixbackground"  src="https://asset-mikecrm-com.alikunlun.com/getimg/origin/client/0110498ad290d012d69870fda2dada51/form/image/942c0af920b706b04ba6c0a7798a2b2c.jpg"></img>
+    <div class="f_wrapper fs_wrapper">
+        <div class="f_main fs_main">
+            <div class="f_header fs_header">
+                <div class="f_text_no_logo">
+                    <h2 class="f_title fs_title">{{ vote.name }}</h2>
+                    <p class="f_describe fs_describe">Let's vote</p>
+                </div>
+            </div>
+            <div class="f_body fs_body">
+                <div clss="f_component" serialnum="0" name="com25" com-name="id_checkBox">
+                    <p class="f_cTitle fs_cTitle">OPTIONS</p>
+                      <form method='post'>
+                        <ul class="f_optionGarden layout-single">
+                        {% for item in vote.item %}
+                        <li class="f_optionsLi ">
+                          <input id="checkbox-id-0-{{ item.id }}" class="f_optionBtn" type="checkbox" name={{ item.id }} value={{ item.id }}></input>
+                          <label class="f_optionVal fs_content" for="checkbox-id-0-{{ item.id }}">{{ item.name }}</label>
+                          <p>({{ item.count }} have selected)</p>
+                        </li>
+                        {% endfor %}
+                        <li class="clearB"></li>
+                        </ul>
+                        <input class="f_submitBtn fs_submitBtn validate_submit" type="submit" value="Submit"></input>
+                      </form>
+                </div>
+            </div>
+        </div>
+        <div class="f_copyright">
+            <a class="f_powerby fs_powerby" targrt="_blank" href="http://muxistudio.com">
+                Powered By MuxiStudio
+            </a>
+        </div>
+    </div>
+  </body>
 </html>

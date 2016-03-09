@@ -1,0 +1,115 @@
+html {
+	background-color: #f4f5f0;
+	color:#000000;
+	background-position:no-repeat top;
+}
+.fs_main {
+	width:570px
+}
+.fs_cTitle {
+	font-size:16PX;
+	line-height:25PX;
+}
+.fs_content {
+	font-size:14px;
+}
+@media screen and (max-width:570px) {
+	div.fs_main {
+		width:100%;
+	}
+}
+div.f_share {
+	left:570px
+}
+div.f_share_main {
+	width:570px
+}
+@media screen and (max-width:792px) {
+	div.f_share {
+		display:none;
+	}
+}
+div.f_share {
+	background-color:rgba(153, 153, 153, 0.4);
+}
+.fs_fixbackground {
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index:0;
+}
+.fs_cValidate {
+	color:#387075;
+}
+.fs_cDescribe a, .fs_cDescribe a:visited {
+	color:#67a3a8
+}
+.fs_cDescribe, .fs_cLink, .fs_cLink:visited {
+	color:#67a3a8
+}
+.fs_cExtraDescribe {
+	color:#67a3a8
+}
+.fs_sectionDescribe, .fs_imgDescribe {
+	color:#67a3a8
+}
+.fs_component {
+	background-color: #add6c5;
+	color:#387075
+}
+.fs_header {
+	background-color: #33959e;
+	color:#fafafa;
+}
+.fs_main {
+	background-color: #defff2;
+	color:#387075;
+}
+.fs_submitBtn,.fs_mobile_vcode_btn {
+	background-color:#33959e;
+	color:#fff;
+	box-shadow: 0 2px 4px -2px #49a9b2;
+}
+.fs_submitBtn:hover,.fs_mobile_vcode_btn:hover {
+	background-color:#49a9b2
+}
+.f_chartViewBtn {
+	color:#fff;
+	background-color: #33959e;
+}
+.f_chartViewBtn:active {
+	color:#fff
+}
+.f_chartViewBtn:visited {
+	color:#fff;
+}
+.f_chartViewBtn:hover {
+	background-color: #49a9b2;
+}
+.f_viewBtn {
+	color:#fff;
+	background-color: #33959e;
+}
+.f_viewBtn:active {
+	color:#fff
+}
+.f_viewBtn:visited {
+	color:#fff;
+}
+.f_viewBtn:hover {
+	background-color: #49a9b2;
+}
+.f_copyright .fs_powerby {
+	color:#333;
+}
+.Zebra_DatePicker td.dp_selected {
+	background-color:#33959e;
+	color:#fff;
+}
+.Zebra_DatePicker td.dp_current {
+	color:#49a9b2
+}
