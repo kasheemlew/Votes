@@ -15,20 +15,22 @@
                 </div>
             </div>
             <div class="f_body fs_body">
-                <div clss="f_component" serialnum="0" name="com25" com-name="id_checkBox">
+                <div class="f_component fs_component" serialnum="0" name="com25" com-name="id_checkBox">
                     <p class="f_cTitle fs_cTitle">OPTIONS</p>
                       <form method='post'>
                         <ul class="f_optionGarden layout-single">
                         {% for item in vote.item %}
                         <li class="f_optionsLi ">
                           <input id="checkbox-id-0-{{ item.id }}" class="f_optionBtn" type="checkbox" name={{ item.id }} value={{ item.id }}></input>
-                          <label class="f_optionVal fs_content" for="checkbox-id-0-{{ item.id }}">{{ item.name }}</label>
-                          <p>({{ item.count }} have selected)</p>
+                          <label class="f_optionVal fs_content" for="checkbox-id-0-{{ item.id }}">{{ item.name }}</label></br>
+                          <p>(Other {{ item.count }} users have selected this item)</p>
                         </li>
                         {% endfor %}
                         <li class="clearB"></li>
                         </ul>
-                        <input class="f_submitBtn fs_submitBtn validate_submit" type="submit" value="Submit"></input>
+                        <div class="f_submit">
+                          <input class="f_submitBtn fs_submitBtn" type="submit" value="Submit"></input>
+                      </div>
                       </form>
                 </div>
             </div>
