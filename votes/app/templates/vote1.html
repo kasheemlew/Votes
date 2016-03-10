@@ -1,45 +1,57 @@
 <!DOCTYPE>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
 </head>
-  <body>
-    <img class="fs_fixbackground"  src="https://asset-mikecrm-com.alikunlun.com/getimg/origin/client/0110498ad290d012d69870fda2dada51/form/image/942c0af920b706b04ba6c0a7798a2b2c.jpg"></img>
-    <div class="f_wrapper fs_wrapper">
-        <div class="f_main fs_main">
-            <div class="f_header fs_header">
-                <div class="f_text_no_logo">
-                    <h2 class="f_title fs_title">{{ vote.name }}</h2>
-                    <p class="f_describe fs_describe">Let's vote</p>
-                </div>
-            </div>
-            <div class="f_body fs_body">
-                <div class="f_component fs_component" serialnum="0" name="com25" com-name="id_checkBox">
-                    <p class="f_cTitle fs_cTitle">OPTIONS</p>
-                      <form method='post'>
-                        <ul class="f_optionGarden layout-single">
-                        {% for item in vote.item %}
-                        <li class="f_optionsLi ">
-                          <input id="checkbox-id-0-{{ item.id }}" class="f_optionBtn" type="checkbox" name={{ item.id }} value={{ item.id }}></input>
-                          <label class="f_optionVal fs_content" for="checkbox-id-0-{{ item.id }}">{{ item.name }}</label></br>
-                          <p>(Other {{ item.count }} users have selected this item)</p>
-                        </li>
-                        {% endfor %}
-                        <li class="clearB"></li>
-                        </ul>
-                        <div class="f_submit">
-                          <input class="f_submitBtn fs_submitBtn" type="submit" value="Submit"></input>
-                      </div>
-                      </form>
-                </div>
-            </div>
-        </div>
-        <div class="f_copyright">
-            <a class="f_powerby fs_powerby" targrt="_blank" href="http://muxistudio.com">
-                Powered By MuxiStudio
-            </a>
-        </div>
+<body>
+  <img class="fs_fixbackground"  src="/static/img/back.jpg"></img>
+  <div class="f_wrapper fs_wrapper">
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <a class="header item" href="/main/">Home</a>
+        <a class="item" href="/admin/">Admin Login</a>
+      </div>
     </div>
-  </body>
+    <h1 class="ui header"></h1>
+    <h1 class="ui header"></h1>
+    <div class="f_main fs_main">
+      <div class="f_header fs_header">
+        <div class="f_text_no_logo">
+          <h2 class="f_title fs_title">{{ vote.name }}</h2>
+            <p class="f_describe fs_describe">Let's vote</p>
+        </div>
+      </div>
+      <div class="f_body fs_body">
+        <div class="f_component fs_component" serialnum="0" name="com25" com-name="id_checkBox">
+          <p class="f_cTitle fs_cTitle">OPTIONS</p>
+          <form method='post'>
+            <ul class="f_optionGarden layout-single">
+              {% for item in vote.item %}
+              <li class="f_optionsLi ">
+                <div class="ui checkbox">
+                  <input type="checkbox" name={{ item.id }} value={{ item.id }}></input>
+                  <label>{{ item.name }}</label>
+                </div>
+                <p>(Other {{ item.count }} users have selected this item)</p>
+              </li>
+              {% endfor %}
+              <li class="clearB"></li>
+            </ul>
+            <div class="f_submit">
+              <input class="ui button" type="submit" value="Submit"></input>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="f_copyright">
+      <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com">
+        Powered By MuxiStudio
+      </a>
+    </div>
+  </div>
+</body>
 </html>

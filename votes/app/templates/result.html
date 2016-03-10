@@ -1,12 +1,48 @@
 <!DOCTYPE>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
+</head>
 <body>
-<h1>{{ vote.name }}</h1>
-{% for item in vote.item %}
-<h3>{{ item.name }}</h3>
-<h3> count {{ item.count }}</h3>
-<hr>
-{% endfor %}
+  <img class="fs_fixbackground"  src="/static/img/back.jpg"></img>
+  <div class="f_wrapper fs_wrapper">
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <a class="header item" href="/main/">Home</a>
+        <a class="item" href="/admin/">Admin Login</a>
+      </div>
+    </div>
+    <h1 class="ui header"></h1>
+    <h1 class="ui header"></h1>
+    <div class="f_main fs_main">
+      <div class="f_header fs_header">
+        <div class="f_text_no_logo">
+          <h2 class="f_title fs_title">{{ vote.name }}</h2>
+            <p class="f_describe fs_describe">The result of {{ vote.name }}</p>
+        </div>
+      </div>
+      <div class="f_body fs_body">
+        <div class="f_component fs_component" serialnum="0" name="com25" com-name="id_checkBox">
+          {% for item in vote.item %}
+          <h3 class="f_cTitle fs_cTitle">{{ item.name }}</h3>
+          <p>{{ item.count }} users have selected this item.</p>
+          <hr>
+          {% endfor %}
+          <div class="f_submit">
+            <a class="ui button" href="/main/">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f_copyright">
+      <a class="f_powerby fs_powerby" target="_blank" href="http://muxisutdio.com/">
+        Powered by MuxiStudio
+      </a>
+    </div>
+  </div>
 </body>
 </html>
 

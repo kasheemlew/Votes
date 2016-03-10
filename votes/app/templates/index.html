@@ -1,11 +1,45 @@
 <!DOCTYPE>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
+</head>
 <body>
-<h1>VOTES</h1>
-{% for vote in votes %}
-<a href={{ url_for('main.vote', id=vote.id ) }}> {{ vote.name }} </a>
-{% if vote.is_on %}<p>the vote is on</p>{% else %}<p>the votes has been closed</p>{% endif %}
-<hr>
-{% endfor %}
+  <img class="fs_fixbackground" src="/static/img/back.jpg"></img>
+  <div class="f_wrapper fs_wrapper">
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a class="header item" href="/main/">Home</a>
+      <a class="item" href="/admin/">Admin Login</a>
+    </div>
+  </div>
+  <div class="ui main text container">
+    <h1 class="ui header"></h1>
+    <h1 class="ui header"></h1>
+    <h1 class="ui header">VOTES</h1>
+    <p>choose one to vote</p>
+    <div class="ui link cards">
+      {% for vote in votes %}
+      <div class="card"}}>
+        <div class="content">
+          <a class="header" href={{ url_for('main.vote', id=vote.id ) }}>{{ vote.name }} </a>
+        </div>
+        <div class="extra content">
+          <span class="right floated">
+            {% if vote.is_on %}the vote is on{% else %}the vote has been closed{% endif %}
+          </span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="f_copyright">
+    <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com/">
+      Powered by MuxiStudio
+    </a>
+  </div>
+  </div>
 </body>
 </html>
