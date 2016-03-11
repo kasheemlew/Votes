@@ -5,51 +5,59 @@
   <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
+  <script src="/static/js/semantic.min.js"></script>
+  <title>投票--{{ vote.name }}</title>
 </head>
 <body>
-  <img class="fs_fixbackground"  src="/static/img/back.jpg"></img>
+  <img class="fs_fixbackground" src="/static/img/back.jpg"></img>
   <div class="f_wrapper fs_wrapper">
     <div class="ui fixed inverted menu">
       <div class="ui container">
-        <a class="header item" href="/main/">Home</a>
-        <a class="item" href="/admin/">Admin Login</a>
+        <a class="header item" href="/main/">首页</a>
+        <!--a class="item" href="/admin/">管理员登录</a-->
+        <a class="item" href="/main/result/{{ vote.id }}">查看投票结果</a>
       </div>
     </div>
-    <h1 class="ui header"></h1>
-    <h1 class="ui header"></h1>
-    <div class="f_main fs_main">
-      <div class="f_header fs_header">
-        <div class="f_text_no_logo">
-          <h2 class="f_title fs_title">{{ vote.name }}</h2>
-            <p class="f_describe fs_describe">Let's vote</p>
-        </div>
-      </div>
-      <div class="f_body fs_body">
-        <div class="f_component fs_component" serialnum="0" name="com25" com-name="id_checkBox">
-          <p class="f_cTitle fs_cTitle">OPTIONS</p>
-          <form method='post'>
-            <ul class="f_optionGarden layout-single">
-              {% for item in vote.item %}
-              <li class="f_optionsLi ">
-                <div class="ui checkbox">
-                  <input type="checkbox" name={{ item.id }} value={{ item.id }}></input>
-                  <label>{{ item.name }}</label>
-                </div>
-                <p>(Other {{ item.count }} users have selected this item)</p>
-              </li>
-              {% endfor %}
-              <li class="clearB"></li>
-            </ul>
-            <div class="f_submit">
-              <input class="ui button" type="submit" value="Submit"></input>
+    <div class="ui container">
+      <h1 class="ui header"></h1>
+      <h1 class="ui header"></h1>
+      <h1 class="ui header">{{ vote.name }}</h1>
+      <p>在名字前的方框中打勾</p>
+      <form class="ui four column stackable grid" method='post'>
+        {% for item in vote.item %}
+        <div class="column">
+          <div class="ui card">
+            <div class="image">
+              <img src="{{ item.picture }}">
             </div>
-          </form>
+            <div class="content">
+              <div class="header ui checkbox">
+                <input type="checkbox" name={{ item.id }} value={{ item.id }}></input>
+                <label>{{ item.name }}</label>
+              </div>
+              <div class="description">
+                <strong>职称:</strong><br>
+                {{ item.title }}<br>
+                <strong>单位:</strong><br>
+                {{ item.organization }}
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="right floated">
+              已有 {{ item.count }} 人选择此选项
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
+        {% endfor %}
+        <div class="one column row" align="center">
+          <input class="ui button" type="submit" value="提交"></input>
+        </div>
+      </form>
     </div>
     <div class="f_copyright">
-      <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com">
-        Powered By MuxiStudio
+      <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com/">
+        Powered by MuxiStudio
       </a>
     </div>
   </div>

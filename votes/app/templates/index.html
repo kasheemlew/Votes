@@ -5,31 +5,35 @@
   <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
+  <script src="/static/js/semantic.min.js"></script>
+  <title>投票--首页</title>
 </head>
 <body>
   <img class="fs_fixbackground" src="/static/img/back.jpg"></img>
   <div class="f_wrapper fs_wrapper">
   <div class="ui fixed inverted menu">
     <div class="ui container">
-      <a class="header item" href="/main/">Home</a>
-      <a class="item" href="/admin/">Admin Login</a>
+      <a class="header item" href="/main/">首页</a>
+      <!--a class="item" href="/admin/">管理员登录</a-->
     </div>
   </div>
-  <div class="ui main text container">
+  <div class="ui container">
     <h1 class="ui header"></h1>
     <h1 class="ui header"></h1>
-    <h1 class="ui header">VOTES</h1>
-    <p>choose one to vote</p>
-    <div class="ui link cards">
+    <h1 class="ui header">所有投票</h1>
+    <p>选择一项进行投票</p>
+    <div class="ui four column stackable grid">
       {% for vote in votes %}
-      <div class="card"}}>
-        <div class="content">
-          <a class="header" href={{ url_for('main.vote', id=vote.id ) }}>{{ vote.name }} </a>
-        </div>
-        <div class="extra content">
-          <span class="right floated">
-            {% if vote.is_on %}the vote is on{% else %}the vote has been closed{% endif %}
-          </span>
+      <div class="column">
+        <div class="ui card">
+          <div class="content">
+            <a class="header" href={{ url_for('main.vote', id=vote.id ) }}>{{ vote.name }} </a>
+          </div>
+          <div class="extra content">
+            <span class="right floated">
+              {% if vote.is_on %}此投票正在进行中{% else %}此投票已关闭{% endif %}
+            </span>
+          </div>
         </div>
       </div>
       {% endfor %}

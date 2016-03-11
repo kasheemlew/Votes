@@ -137,6 +137,10 @@ class Item(db.Model):
     __tablename__ = 'item'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
+    title = db.Column(db.String(100))
+    picture = db.Column(db.Text())
+    introduction = db.Column(db.Text())
+    organization = db.Column(db.Text())
     vote_id = db.Column(db.Integer, db.ForeignKey('vote.id'))
     count = db.Column(db.Integer, default=0)
 
