@@ -14,7 +14,6 @@
     <div class="ui fixed inverted menu">
       <div class="ui container">
         <a class="header item" href="/main/">首页</a>
-        <!--a class="item" href="/admin/">管理员登录</a-->
         <a class="item" href="/main/result/{{ vote.id }}">查看投票结果</a>
       </div>
     </div>
@@ -22,7 +21,7 @@
       <h1 class="ui header"></h1>
       <h1 class="ui header"></h1>
       <h1 class="ui header">{{ vote.name }}</h1>
-      <p>在名字前的方框中打勾</p>
+      <p>在名字前的方框中打勾,然后点击提交</p>
       <form class="ui four column stackable grid" method='post'>
         {% for item in vote.item %}
         <div class="column">
@@ -39,7 +38,8 @@
                 <strong>职称:</strong><br>
                 {{ item.title }}<br>
                 <strong>单位:</strong><br>
-                {{ item.organization }}
+                {{ item.organization }}<br><hr><br>
+                <a class="ui basic button" href="/main/introduction/{{ item.id }}/">介绍</a>
               </div>
             </div>
             <div class="extra content">

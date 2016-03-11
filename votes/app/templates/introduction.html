@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/line.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/form.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css">
+  <script src="/static/js/semantic.min.js"></script>
+  <title>{{ item.name }}--介绍</title>
+</head>
+<body>
+  <img class="fs_fixbackground" src="/static/img/back.jpg"></img>
+  <div class="f_wrapper fs_wrapper">
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a class="header item" href="/main/">首页</a>
+      <a class="item" href="/main/vote/{{ item.vote_id }}/">返回投票</a>
+    </div>
+  </div>
+  <div class="ui container">
+    <h1 class="ui header"></h1>
+    <h1 class="ui header"></h1>
+    <h1 class="ui header" align="center"><strong>{{ item.name }}</strong>的资料</h1>
+    <div class="ui centered card">
+      <div class="image">
+        <img src="{{ item.picture }}">
+      </div>
+      <div class="content">
+        <div class="header">{{ item.name }}</div>
+        <div class="description">
+            <strong>个人介绍:</strong><br><br>
+            {{ item.introduction }}
+        </div>
+      </div>
+    </div>
+    <div class="f_copyright">
+      <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com/">
+        Powered by MuxiStudio
+      </a>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

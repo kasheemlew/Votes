@@ -34,5 +34,11 @@ def vote(id):
 
 @main.route('/result/<int:id>/')
 def result(id):
-     vote = Vote.query.get_or_404(id)
-     return render_template('result.html', vote=vote)
+    vote = Vote.query.get_or_404(id)
+    return render_template('result.html', vote=vote)
+
+
+@main.route('/introduction/<int:id>/')
+def introduction(id):
+    item = Item.query.get_or_404(id)
+    return render_template('introduction.html', item=item)
