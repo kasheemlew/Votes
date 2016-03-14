@@ -1,10 +1,11 @@
 # coding: utf-8
 
-from flask import Flask
+from flask import Flask, Markup
 from flask.ext.bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from config import config
+import markdown
 
 
 app = Flask(__name__)
@@ -43,3 +44,8 @@ app.register_blueprint(main, url_prefix='/main')
 
 from auth import auth
 app.register_blueprint(auth, url_prefix="/auth")
+
+@app.template_filter('neomarkdown')
+def neomarkdown(markdown_content):
+    content = Markup(markdown.markdown(markdown_content))
+    return content

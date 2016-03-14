@@ -29,7 +29,7 @@
         <div class="header">{{ item.name }}</div>
         <div class="description">
             <strong>个人介绍:</strong><br><br>
-            {{ item.introduction }}
+            {{ item.introduction|neomarkdown }}
         </div>
       </div>
     </div>
