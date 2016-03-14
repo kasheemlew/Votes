@@ -1,0 +1,38 @@
+/**
+ * custom.css
+ * by zindex
+ */
+
+/**
+ * vote page
+ */
+
+.ui .vote_name,.ui .vote_tip{
+	color:rgba(255,255,255,.9);
+}
+.ui .vote_intro_btn{
+	display: inline-block;
+	margin-top: 10px;
+}
+.ui .image img{
+	min-height: 350px;
+}
+.ui .image{
+	height: 350px;
+	overflow: hidden;
+}
+.ui .card{
+	width: 100%;
+}
+.ui .vote_submit_btn{
+	margin-left: 10px;
+}
+/**
+ * footer
+ */
+
+.f_copyright{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
