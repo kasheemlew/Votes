@@ -1,11 +1,12 @@
 <!DOCTYPE>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
-  <script src="/static/js/semantic.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
   <title>投票--{{ vote.name }}</title>
 </head>
 <body>
@@ -13,16 +14,16 @@
   <div class="f_wrapper fs_wrapper">
     <div class="ui fixed inverted menu">
       <div class="ui container">
-        <a class="header item" href="/main/">首页</a>
-        <a class="item" href="/main/result/{{ vote.id }}">查看投票结果</a>
+        <a class="header item" href="/main/vote/{{ vote.id }}">投票</a>
+        <a class="item" href="/main/result/{{ vote.id }}">投票结果</a>
       </div>
     </div>
     <div class="ui container">
       <h1 class="ui header"></h1>
       <h1 class="ui header"></h1>
-      <h1 class="ui header">{{ vote.name }}</h1>
-      <p>在名字前的方框中打勾,然后点击提交</p>
-      <form class="ui four column stackable grid" method='post'>
+      <h1 class="ui header vote_name">{{ vote.name }}</h1>
+      <p class="vote_tip">提示：一人可投三票，投票完成后请点击下面按钮提交</p>
+      <form id="voteForm" class="ui four column stackable grid" method='post'>
         {% for item in vote.item %}
         <div class="column">
           <div class="ui card">
@@ -35,31 +36,37 @@
                 <label>{{ item.name }}</label>
               </div>
               <div class="description">
-                <strong>职称:</strong><br>
-                {{ item.title }}<br>
-                <strong>单位:</strong><br>
-                {{ item.organization }}<br><hr><br>
-                <a class="ui basic button" href="/main/introduction/{{ item.id }}/">介绍</a>
+                <div>
+                  <strong>职称:</strong>
+                  <span>{{ item.title }}</span>
+                </div>
+                <div>
+                   <strong>单位:</strong>
+                  <span>{{ item.organization }}</span>
+                </div>
+                <a class="ui basic button vote_intro_btn" href="/main/introduction/{{ item.id }}/">介绍</a>
               </div>
             </div>
             <div class="extra content">
               <span class="right floated">
-              已有 {{ item.count }} 人选择此选项
+              当前票数：{{ item.count }} 
               </span>
             </div>
           </div>
         </div>
         {% endfor %}
         <div class="one column row" align="center">
-          <input class="ui button" type="submit" value="提交"></input>
+          <input class="ui button vote_submit_btn" type="submit" value="提交"></input>
         </div>
       </form>
     </div>
-    <div class="f_copyright">
+  </div>
+  <div class="f_copyright">
       <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com/">
         Powered by MuxiStudio
       </a>
     </div>
-  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  <script src="/static/js/custom.js"></script>
 </body>
 </html>

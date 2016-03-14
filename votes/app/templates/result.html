@@ -5,7 +5,6 @@
   <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css"/>
-  <script src="/static/js/semantic.min.js"></script>
   <title>{{ vote.name }}-结果</title>
 </head>
 <body>
@@ -31,7 +30,7 @@
           </div>
           <div class="extra content">
             <span class="right floated">
-              共有 {{ item.count }} 选择此项
+              当前票数：{{ item.count }} 
             </span>
           </div>
         </div>
@@ -39,11 +38,11 @@
       {% endfor %}
     </div>
   </div>
+  </div>
   <div class="f_copyright">
     <a class="f_powerby fs_powerby" target="_blank" href="http://muxistudio.com/">
       Powered by MuxiStudio
     </a>
-  </div>
   </div>
 </body>
 </html>

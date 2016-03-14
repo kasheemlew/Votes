@@ -312,7 +312,7 @@ ul.f_optionGarden .f_otherLi { width: 80%; }
 .f_submitBtn { display: inline-block; line-height: 28px; padding: 2px 24px; font-size: 13px; text-align: center; color: #FFF; background: #3E76A7; border-radius: 2px; }
 .f_submitBtn:hover { background: #659CCC; }
 .f_copyright { height: 20px; margin-top: 20px; margin-bottom: 20px; text-align: center; }
-.f_powerby, .f_powerby:visited { display: inline-block; line-height: 20px; color: #333; }
+.f_powerby, .f_powerby:visited { display: inline-block; line-height: 20px; color: #fff; }
 .file_error { color: #B94A48; }
 .f_cart { padding: 15px; margin: 20px; border: 1px solid #ACACAC; background: #FFF; }
 .f_productslist { border-bottom: 1px dashed #CCC; padding-bottom: 8px; margin-bottom: 4px; }
