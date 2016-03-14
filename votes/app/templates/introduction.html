@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="/static/css/form.css">
   <link rel="stylesheet" type="text/css" href="/static/css/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/breadcrumb.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
   <script src="/static/js/semantic.min.js"></script>
   <title>{{ item.name }}--介绍</title>
 </head>
@@ -20,16 +21,13 @@
   <div class="ui container">
     <h1 class="ui header"></h1>
     <h1 class="ui header"></h1>
-    <h1 class="ui header" align="center"><strong>{{ item.name }}</strong>的资料</h1>
+    <h1 class="ui header" align="center"></h1>
     <div class="ui centered card">
-      <div class="image">
-        <img src="{{ item.picture }}">
-      </div>
       <div class="content">
         <div class="header">{{ item.name }}</div>
         <div class="description">
             <strong>个人介绍:</strong><br><br>
-            {{ item.introduction }}
+            <div>{{ item.introduction }}</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
+  <meta name="renderer" content="webkit">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/static/css/line.css"/>
   <link rel="stylesheet" type="text/css" href="/static/css/form.css"/>
@@ -22,9 +23,9 @@
       <h1 class="ui header"></h1>
       <h1 class="ui header"></h1>
       <h1 class="ui header vote_name">{{ vote.name }}</h1>
-      <p class="vote_tip">提示：一人可投三票，投票完成后请点击下面按钮提交</p>
+      <p class="vote_tip">提示：请在6名候选人中选定3人，然后点击下面提交按钮</p>
       <form id="voteForm" class="ui four column stackable grid" method='post'>
-        {% for item in vote.item %}
+        {% for item in vote.item | sort(attribute='name')  %}
         <div class="column">
           <div class="ui card">
             <div class="image">
