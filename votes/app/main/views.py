@@ -35,7 +35,8 @@ def vote(id):
 @main.route('/result/<int:id>/')
 def result(id):
     vote = Vote.query.get_or_404(id)
-    return render_template('result.html', vote=vote)
+    sorteditems = sorted(vote.item, key= lambda item: item.count, reverse=True)
+    return render_template('result.html', vote=vote, sorteditems=sorteditems)
 
 
 @main.route('/introduction/<int:id>/')

@@ -137,6 +137,7 @@ class Item(db.Model):
     __tablename__ = 'item'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
+    nmpinyin = db.Column(db.String(100))
     title = db.Column(db.String(100))
     picture = db.Column(db.Text())
     introduction = db.Column(db.Text())
