@@ -66,6 +66,7 @@
 				<script>
 				    var handler = function (captchaObj) {
 				         // 将验证码加到id为captcha的元素里
+                         window.gtObj = captchaObj;
 				         captchaObj.appendTo("#captcha");
 				     };
 				    $.ajax({

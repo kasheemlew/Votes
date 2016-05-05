@@ -70,6 +70,8 @@ def validate_capthca():
         result = gt.failback_validate(challenge, validate, seccode)
     if result:
         return redirect(url_for('main.index'))
+    else:
+        return 'wrong'
 
 
 @main.route('/login/')
